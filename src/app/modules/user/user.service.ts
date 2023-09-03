@@ -1,3 +1,4 @@
+import { User } from "@prisma/client";
 import { prisma } from "../../../shared/prisma";
 
 const getAllUsers = async () => {
@@ -29,7 +30,27 @@ const getSingleUser = async (id: string) => {
     return user;
 };
 
+const updateUser = async (id: string, payload: Partial<User>) => {
+    const user = await prisma.user.update({
+        where: {
+            id,
+        },
+        data: payload,
+        select: {
+            id: true,
+            name: true,
+            email: true,
+            role: true,
+            contactNo: true,
+            address: true,
+            profileImg: true,
+        },
+    });
+    return user;
+};
+
 export const UserService = {
     getAllUsers,
     getSingleUser,
+    updateUser,
 };
