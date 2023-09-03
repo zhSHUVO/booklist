@@ -1,7 +1,11 @@
-import { Prisma } from "@prisma/client";
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
-import { ZodError } from "zod";
 import config from "../../config";
+
+import { Prisma } from "@prisma/client";
+import { ZodError } from "zod";
 import ApiError from "../../errors/Apierror";
 import handleClientError from "../../errors/handleClientError";
 import handleValidationError from "../../errors/handleValidationError";
@@ -14,12 +18,10 @@ const globalErrorHandler: ErrorRequestHandler = (
     res: Response,
     next: NextFunction
 ) => {
-    config.env === "development"
-        ? console.log(`🐱‍🏍 globalErrorHandler ~~`, { error })
-        : console.error(`🐱‍🏍 globalErrorHandler ~~`, error);
+    console.log("\x1b[31m%s\x1b[0m", `[ERROR HANDLER]`, error);
 
     let statusCode = 500;
-    let message = "Something went wrong !";
+    let message = "Something went wrong!";
     let errorMessages: IGenericErrorMessage[] = [];
 
     if (error instanceof Prisma.PrismaClientValidationError) {

@@ -2,6 +2,7 @@ import { Prisma } from "@prisma/client";
 import { IGenericErrorMessage } from "../interfaces/error";
 
 const handleClientError = (error: Prisma.PrismaClientKnownRequestError) => {
+    console.log("--------------", error);
     let errors: IGenericErrorMessage[] = [];
     let message = "";
     const statusCode = 400;
