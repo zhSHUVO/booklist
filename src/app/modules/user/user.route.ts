@@ -8,6 +8,7 @@ router.route("/").get(UserController.getAllUsers);
 router
     .route("/:id")
     .get(UserController.getSingleUser)
-    .patch(UserController.updateUser);
+    .patch(UserController.updateUser)
+    .delete(UserController.deleteUser);
 
 export const UserRoutes = router;
