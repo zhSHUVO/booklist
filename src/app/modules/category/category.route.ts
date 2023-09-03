@@ -9,4 +9,8 @@ router
     .route("/create-category")
     .post(auth(ENUM_USER_ROLE.ADMIN), CategoryController.createCategory);
 
+router
+    .route("/")
+    .get(auth(ENUM_USER_ROLE.ADMIN), CategoryController.getAllCategory);
+
 export const CategoryRoutes = router;
