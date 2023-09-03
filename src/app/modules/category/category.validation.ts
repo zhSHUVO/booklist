@@ -10,7 +10,9 @@ const create = z.object({
 
 const update = z.object({
     body: z.object({
-        title: z.string().optional(),
+        title: z.string({
+            required_error: "Title is Required",
+        }),
     }),
 });
 
