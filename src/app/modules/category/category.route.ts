@@ -26,6 +26,7 @@ router
         auth(ENUM_USER_ROLE.ADMIN),
         validateRequest(CategoryValidation.update),
         CategoryController.updateCategory
-    );
+    )
+    .delete(auth(ENUM_USER_ROLE.ADMIN), CategoryController.deleteCategory);
 
 export const CategoryRoutes = router;
