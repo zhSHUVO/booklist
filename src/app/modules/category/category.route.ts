@@ -13,4 +13,8 @@ router
     .route("/")
     .get(auth(ENUM_USER_ROLE.ADMIN), CategoryController.getAllCategory);
 
+router
+    .route("/:id")
+    .get(auth(ENUM_USER_ROLE.ADMIN), CategoryController.getSingleCategory);
+
 export const CategoryRoutes = router;
