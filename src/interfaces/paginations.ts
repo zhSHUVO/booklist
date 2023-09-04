@@ -7,14 +7,14 @@ export type IPaginationOptions = {
 
 export type IOptions = {
     page?: number;
-    limit?: number;
+    size?: number;
     sortBy?: string;
     sortOrder?: string;
 };
 
 export type IOptionsResult = {
     page: number;
-    limit: number;
+    size: number;
     skip: number;
     sortBy: string;
     sortOrder: string;
