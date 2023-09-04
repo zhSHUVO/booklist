@@ -125,6 +125,15 @@ const updateBook = async (id: string, payload: Partial<Book>) => {
     return Book;
 };
 
+const deleteBook = async (id: string) => {
+    const Book = await prisma.book.delete({
+        where: {
+            id,
+        },
+    });
+    return Book;
+};
+
 const getBooksByCategoryId = async (
     id: string,
     paginationOptions: IPaginationOptions
@@ -169,5 +178,6 @@ export const BookService = {
     getAllBooks,
     getSingleBook,
     updateBook,
+    deleteBook,
     getBooksByCategoryId,
 };

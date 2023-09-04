@@ -24,7 +24,8 @@ router
         auth(ENUM_USER_ROLE.ADMIN),
         validateRequest(BookValidation.update),
         BookController.updateBook
-    );
+    )
+    .delete(auth(ENUM_USER_ROLE.ADMIN), BookController.deleteBook);
 
 router.route("/:id/category").get(BookController.getBooksByCategoryId);
 

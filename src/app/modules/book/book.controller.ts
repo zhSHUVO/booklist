@@ -54,6 +54,17 @@ const updateBook = catchAsync(async (req: Request, res: Response) => {
     });
 });
 
+const deleteBook = catchAsync(async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const result = await BookService.deleteBook(id);
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: "Book deleted successfully",
+        data: result,
+    });
+});
+
 const getBooksByCategoryId = catchAsync(async (req: Request, res: Response) => {
     const { id } = req.params;
     const paginationOptions = pick(req.query, paginationFields);
@@ -75,5 +86,6 @@ export const BookController = {
     getAllBooks,
     getSingleBook,
     updateBook,
+    deleteBook,
     getBooksByCategoryId,
 };
