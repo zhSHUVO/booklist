@@ -15,6 +15,8 @@ router
         BookController.createBook
     );
 
-router.route("/").get(auth(ENUM_USER_ROLE.ADMIN), BookController.getAllBooks);
+router.route("/").get(BookController.getAllBooks);
+
+router.route("/:id").get(BookController.getSingleBook);
 
 export const BookRoutes = router;
