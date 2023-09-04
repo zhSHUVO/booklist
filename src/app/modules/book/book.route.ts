@@ -19,4 +19,6 @@ router.route("/").get(BookController.getAllBooks);
 
 router.route("/:id").get(BookController.getSingleBook);
 
+router.route("/:id/category").get(BookController.getBooksByCategoryId);
+
 export const BookRoutes = router;
