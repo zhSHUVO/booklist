@@ -16,4 +16,11 @@ router
         OrderController.getOrder
     );
 
+router
+    .route("/")
+    .get(
+        auth(ENUM_USER_ROLE.ADMIN, ENUM_USER_ROLE.CUSTOMER),
+        OrderController.getAllOrders
+    );
+
 export const OrderRoutes = router;
