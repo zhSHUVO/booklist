@@ -115,6 +115,16 @@ const getSingleBook = async (id: string) => {
     return Book;
 };
 
+const updateBook = async (id: string, payload: Partial<Book>) => {
+    const Book = await prisma.book.update({
+        where: {
+            id,
+        },
+        data: payload,
+    });
+    return Book;
+};
+
 const getBooksByCategoryId = async (
     id: string,
     paginationOptions: IPaginationOptions
@@ -158,5 +168,6 @@ export const BookService = {
     createBook,
     getAllBooks,
     getSingleBook,
+    updateBook,
     getBooksByCategoryId,
 };

@@ -17,7 +17,14 @@ router
 
 router.route("/").get(BookController.getAllBooks);
 
-router.route("/:id").get(BookController.getSingleBook);
+router
+    .route("/:id")
+    .get(BookController.getSingleBook)
+    .patch(
+        auth(ENUM_USER_ROLE.ADMIN),
+        validateRequest(BookValidation.update),
+        BookController.updateBook
+    );
 
 router.route("/:id/category").get(BookController.getBooksByCategoryId);
 
