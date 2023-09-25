@@ -33,7 +33,7 @@ const signIn = catchAsync(async (req: Request, res: Response) => {
         statusCode: httpStatus.OK,
         success: true,
         message: "User loggedin successfully !",
-        data: others,
+        token: result.accessToken,
     });
 });
 
